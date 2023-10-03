@@ -5,7 +5,7 @@ const { eAdmin } = require('../helpers/admin.js')
 
 router.get('/', SelecaoController.index)
 
-router.get('/:id', eAdmin, SelecaoController.show)
+router.get('/:id', SelecaoController.show)
 
 router.put('/', (req, res)=>{
     res.send({data: "Rota put"})

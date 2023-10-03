@@ -1,12 +1,19 @@
+const user = require('../db/user.js');
 class SelecaoController{
 
-    index(req, res){
-        res.send({data: "Rota get"})
+    async index(req, res){
+        const dados = await user.findAll()
+
+        return res.send(dados)
     }
-    show(req, res){
+    async show(req, res){
         const id = req.params.id
 
-        res.send({data: 'Meu id é: '+id})
+        const dados = await user.findByPk(id)
+
+        if(dados) return res.send(dados)
+        return res.send({data: 'Sem dados'})
+
     }
     store(){}
     update(){}
